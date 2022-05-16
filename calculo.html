@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculo</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+  <script src="data.js"></script>
+  <style>
+    body {
+      font-family: sans-serif
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .flex-column {
+      flex-direction: column;
+    }
+
+    .items-center {
+      align-items: center;
+    }
+
+    .clientes {
+      width: 23vw;
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+    }
+
+    .clientes div {
+      padding: 0.2rem;
+    }
+
+    .justify-content-center {
+      justify-content: center;
+    }
+
+    .clientes .mejor {
+      background-color: #d3f4da;
+      border: 1px solid #44ee68;
+    }
+
+    .clientes .peor {
+      background-color: #f4d3d3;
+      border: 1px solid #ee4444;
+    }
+
+    .clientes .promedio {
+      background-color: #d3e1f4;
+      border: 1px solid #447cee;
+    }
+  </style>
+</head>
+
+<body>
+  <div style="display: flex; gap:4em">
+    <div style="width: 30vw;">
+      <h2>Ganancias por mes</h2>
+      <canvas id="profitByMonths" width="400" height="400"></canvas>
+    </div>
+    <div style="width: 30vw;">
+      <h2>Usuarios por mes</h2>
+      <canvas id="usersByMonths" width="400" height="400"></canvas>
+    </div>
+    <div class="clientes">
+      <h2>Usuarios / Usuarios subscriptos</h2>
+      <div class="flex items-center mejor">
+        <div style="width: 35%;">
+          <canvas id="reportClientsBest" width="400" height="400"></canvas>
+        </div>
+        Mejor
+      </div>
+      <div class="flex items-center peor">
+        <div style="width: 35%;">
+          <canvas id="reportClientsWorst" width="400" height="400"></canvas>
+        </div>
+        Peor
+      </div>
+      <div class="flex items-center promedio">
+        <div style="width: 35%;">
+          <canvas id="reportClientsAverage" width="400" height="400"></canvas>
+        </div>
+        Promedio
+      </div>
+    </div>
+  </div>
+  <div>
+    valores:
+    <code id="values"></code>
+  </div>
+
+  <script>
+    new Chart(document.getElementById('profitByMonths').getContext('2d'), { type: 'line', data: profitByMonths });
+    new Chart(document.getElementById('usersByMonths').getContext('2d'), { type: 'line', data: usersByMonths });
+    new Chart(document.getElementById('reportClientsBest').getContext('2d'), { type: 'pie', data: reportClientsBest, plugins: [ChartDataLabels], });
+    new Chart(document.getElementById('reportClientsWorst').getContext('2d'), { type: 'pie', data: reportClientsWorst, plugins: [ChartDataLabels], });
+    new Chart(document.getElementById('reportClientsAverage').getContext('2d'), { type: 'pie', data: reportClientsAverage, plugins: [ChartDataLabels], });
+    document.getElementById('values').innerHTML = "<pre>"+JSON.stringify(rowData,undefined, 2) +"</pre>"
+  </script>
+</body>
+
+</html>

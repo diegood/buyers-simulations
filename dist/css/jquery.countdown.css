@@ -1,0 +1,17 @@
+.countdownHolder{
+	width:640px;
+	margin:0 auto;
+	font: 40px/1.5 'Open Sans Condensed',sans-serif;
+	text-align:center;
+	letter-spacing:-10px;
+}
+
+
+.digit{
+	background-color:transparent;
+	border-radius:0.2em;
+	text-align:center;
+	color:#f15c58;
+	letter-spacing:-1px;
+	font-size: 60px
+}

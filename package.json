@@ -1,0 +1,18 @@
+{
+  "name": "folouit",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "calculateClients.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "moment": "^2.29.3"
+  },
+  "scripts": {
+    "start": "nodemon  --experimental-modules calculateClients.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
