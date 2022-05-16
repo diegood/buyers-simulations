@@ -15,11 +15,13 @@ export default class Months{
     this.december = 0
   }
   addCount(month, count){
-    if(typeof month === 'number') month = moment().month(month-1).format('MMMM').toLowerCase() 
+    if(typeof month === 'number') month = moment().month(month).format('MMMM').toLowerCase() 
     this[month] += count
   }
   getCumulativeCount(){
-    return Object.values(this).map((m, i, list) => i===0 ? Math.round(m) : Math.round(m) + list[i - 1])
+    const calculated = []
+    Object.values(this).forEach((m, i) => calculated.push(i===0 ? Math.round(m) : Math.round(m) + calculated[i - 1]))
+    return calculated
   }
   getCountByMonths(){
     return Object.values(this)

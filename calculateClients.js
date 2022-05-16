@@ -13,7 +13,7 @@ const maxTimeItWillTakeToContract = 90; // in days
 
 function getCountByYear(){
   const count = new Count()
-  for (let monthNumber = 0; monthNumber <= 12; monthNumber++) {
+  for (let monthNumber = 0; monthNumber <= 11; monthNumber++) {
     createUsersPerMonth(monthNumber, count)
   }
   count.profits.byYear = count.profits.byMonth.getCumulativeCount().reduce((a, b) => a + b, 0)
@@ -27,7 +27,8 @@ function createUsersPerMonth(monthNumber, count){
 }
 
 function createUsersPerDay(monthNumber, count){
-  for (let i = 0; i <= faker.mersenne.rand(0, maxUserPerDay); i++) {
+  const limit = faker.mersenne.rand(0, maxUserPerDay)
+  for (let i = 0; i <= limit; i++) {
     const user = new User()
     count.users.total++
     count.users.byMonth.addCount(monthNumber, 1)

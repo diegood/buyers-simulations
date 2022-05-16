@@ -5,12 +5,13 @@ export default class User {
     this.gender = faker.name.gender(true);
     this.name = faker.name.findName(undefined, undefined, this.gender);
     this.countOfClients = faker.mersenne.rand(1, 35);
+    this.countOfClients = 10;
     this.age = faker.mersenne.rand(18, 60); // edades limites que pueden llegar a utilizar folouit
     this.probabilityOfHiring = this.getProbabilityOfHiring() // que proabilidades existen de que se vuelva un usuario de pago
   }
 
   getProbabilityOfHiring() {
-    return (randomNumber(1, randomNumber(1, 9))*0.1)//+ (this.getAgeModifiers()*0.1) + (this.getModifiersByClients()*0.1)
+    return (randomNumber(1, randomNumber(1, 9))*0.1) + (this.getAgeModifiers()*0.1) + (this.getModifiersByClients()*0.1)
   }
 
   get goingToHire() {
