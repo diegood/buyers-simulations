@@ -5,7 +5,7 @@ import Count from './stimations/Count.js';
 import generateReport from './stimations/Report.js'
 
 const maxUserPerDay = 4;
-const NumberOfSimulations = 100;
+const NumberOfSimulations = 10000;
 const maxTimeItWillTakeToContract = 90; // in days
 
 
